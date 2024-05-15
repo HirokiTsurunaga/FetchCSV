@@ -4,6 +4,8 @@ import Papa from 'papaparse';
 interface PDFData {
   title: string;
   path: string;
+  updateAt: string;
+  createAt: string;
   keywords: string;
 }
 
@@ -78,6 +80,7 @@ const PDFList: React.FC = () => {
 
   return (
     <div>
+      <h1 className=" font-bold  text-2xl my-3">ページタイトル</h1>
       <input
         type="text"
         value={query}
@@ -92,24 +95,35 @@ const PDFList: React.FC = () => {
       {loading ? (
         <div>Now Loading...</div>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>タイトル</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentData.map((pdf, index) => (
-              <tr key={index}>
-                <td>
-                  <a href={pdf.path} target="_blank" rel="noopener noreferrer">
-                    {pdf.title}
-                  </a>
-                </td>
+        <div className="flex justify-center mt-3">
+          <table className=" table-fixed w-full">
+            <thead>
+              <tr>
+                <th className=" max-w-fit">pdfタイトル</th>
+                <th className=" w-20">更新日</th>
+                <th className=" w-20">作成日</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {currentData.map((pdf, index) => (
+                <tr key={index} className=" hover:bg-emerald-300">
+                  <td className=" flex justify-start">
+                    <a
+                      href={pdf.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className=" text-start"
+                    >
+                      {pdf.title}
+                    </a>
+                  </td>
+                  <td>{pdf.updateAt}</td>
+                  <td>{pdf.createAt}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
       {loadingAllData && <div>Loading all data for search...</div>}
       <div>

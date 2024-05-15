@@ -1,11 +1,6 @@
-﻿title,path,keywords
-初期データ,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
-テスト,/test.pdf,aaa
+﻿title,path,updateAt,createAt,keywords
+初期データ,/test.pdf,2024/5/11,2024/4/23,aaa
+初期データ,/test.pdf,2024/5/11,2024/4/23,aaa
+初期データ,/test.pdf,2024/5/11,2024/4/23,aaa
+初期データ,/test.pdf,2024/5/11,2024/4/23,aaa
+初期データ,/test.pdf,2024/5/11,2024/4/23,aaa
