@@ -77,6 +77,7 @@ const PDFList: React.FC = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = displayedData.slice(startIndex, endIndex);
+  const currentMaxPage = Math.floor(displayedData.length / itemsPerPage) + 1;
 
   return (
     <div>
@@ -108,14 +109,16 @@ const PDFList: React.FC = () => {
               {currentData.map((pdf, index) => (
                 <tr key={index} className=" hover:bg-emerald-300">
                   <td className=" flex justify-start">
-                    <a
-                      href={pdf.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className=" text-start"
-                    >
-                      {pdf.title}
-                    </a>
+                    <button>
+                      <a
+                        href={pdf.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className=" text-start"
+                      >
+                        {pdf.title}
+                      </a>
+                    </button>
                   </td>
                   <td>{pdf.updateAt}</td>
                   <td>{pdf.createAt}</td>
@@ -142,7 +145,9 @@ const PDFList: React.FC = () => {
           {'>'}
         </button>
       </div>
-      <p>{currentPage}</p>
+      <p>
+        {currentPage}/{currentMaxPage}
+      </p>
     </div>
   );
 };
