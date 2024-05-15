@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import Papa from 'papaparse';
 
 interface PDFData {
@@ -22,10 +22,8 @@ const PDFList: React.FC = () => {
     const fetchInitialData = async () => {
       try {
         const response = await fetch('/initial-data.csv');
-        console.log(response);
         const csvData = await response.text();
         const parsedData = Papa.parse<PDFData>(csvData, { header: true }).data;
-        console.log(csvData);
         setData(parsedData);
       } catch (error) {
         console.error('Error fetching initial data:', error);
@@ -40,7 +38,6 @@ const PDFList: React.FC = () => {
         const response = await fetch('/all-data.csv');
         const csvData = await response.text();
         const parsedData = Papa.parse<PDFData>(csvData, { header: true }).data;
-        console.log(parsedData);
         setData(parsedData);
       } catch (error) {
         console.error('Error fetching all data:', error);
@@ -60,12 +57,6 @@ const PDFList: React.FC = () => {
   const handlePreviousPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
-
-  //   const handleSearch = (e: KeyboardEvent<HTMLInputElement>) => {
-  //     if (e.key === 'Enter') {
-  //       setCurrentPage(1); // 検索時にページをリセット
-  //     }
-  //   };
 
   const filteredData = data.filter(
     (pdf) =>
@@ -90,7 +81,6 @@ const PDFList: React.FC = () => {
           setQuery(e.target.value);
           setCurrentPage(1);
         }}
-        // onKeyPress={handleSearch} // エンターキーで検索
         placeholder="検索キーワードを入力"
       />
       {loading ? (
