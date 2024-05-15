@@ -81,20 +81,21 @@ const PDFList: React.FC = () => {
       <input
         type="text"
         value={query}
+        className=" border"
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           setQuery(e.target.value);
           setCurrentPage(1);
         }}
         // onKeyPress={handleSearch} // エンターキーで検索
-        placeholder="Search..."
+        placeholder="検索キーワードを入力"
       />
       {loading ? (
-        <div>Loading initial data...</div>
+        <div>Now Loading...</div>
       ) : (
         <table>
           <thead>
             <tr>
-              <th>Title</th>
+              <th>タイトル</th>
             </tr>
           </thead>
           <tbody>
@@ -111,15 +112,22 @@ const PDFList: React.FC = () => {
         </table>
       )}
       {loadingAllData && <div>Loading all data for search...</div>}
-      <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-        Previous
-      </button>
-      <button
-        onClick={handleNextPage}
-        disabled={endIndex >= displayedData.length}
-      >
-        Next
-      </button>
+      <div>
+        <button
+          className=" mx-3  px-2 border disabled:border-none disabled:text-gray-200"
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+        >
+          {'<'}
+        </button>
+        <button
+          className=" mx-3 px-2 border disabled:border-none disabled:text-gray-200"
+          onClick={handleNextPage}
+          disabled={endIndex >= displayedData.length}
+        >
+          {'>'}
+        </button>
+      </div>
       <p>{currentPage}</p>
     </div>
   );
