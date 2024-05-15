@@ -1,9 +1,10 @@
 import './App.css';
+import PDFList from './components/pdfList';
 
 function App() {
   return (
     <>
-      <p className=" bg-gray-600">aaa</p>
+      <PDFList></PDFList>
     </>
   );
 }
