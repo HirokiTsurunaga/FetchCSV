@@ -21,7 +21,7 @@ const PDFList: React.FC = () => {
     // 初期データのフェッチ
     const fetchInitialData = async () => {
       try {
-        const response = await fetch('./initial-data.csv');
+        const response = await fetch('https://hirokitsurunaga.github.io/FetchCSV/initial-data.csv');
         const csvData = await response.text();
         const parsedData = Papa.parse<PDFData>(csvData, { header: true }).data;
         setData(parsedData);
@@ -35,7 +35,7 @@ const PDFList: React.FC = () => {
     // 全体データのフェッチ
     const fetchAllData = async () => {
       try {
-        const response = await fetch('./all-data.csv');
+        const response = await fetch('https://hirokitsurunaga.github.io/FetchCSV//all-data.csv');
         const csvData = await response.text();
         const parsedData = Papa.parse<PDFData>(csvData, { header: true }).data;
         setData(parsedData);
